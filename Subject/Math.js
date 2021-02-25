@@ -7,19 +7,19 @@ import firestore from '@react-native-firebase/firestore';
 import { Input, ListItem } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 
-
 class addData extends Component {
-
+  
   constructor() {
     super();
-    this.usersCollectionRef = firestore().collection('math');
     this.state = {
+      text: "",
       question: "",
       choice1: "",
       choice2: "",
       choice3: "",
       choice4:""
     }
+    this.usersCollectionRef = firestore().collection('SF210').doc().collection('Exam')
 
 }
 
@@ -52,8 +52,18 @@ class addData extends Component {
             })
         })
     }
+
+    fnPoom (){
+      const {text} = this.props.route.params
+      this.setState({
+        text: {text}
+      })
+    }
     render (){
+      
       return (
+        
+        
         <ScrollView>
           <View style={styles.container}>
 
